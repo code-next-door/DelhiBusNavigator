@@ -21,6 +21,33 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Kashish\.android\build-cache\c24e453b2a55d8af6a7c569a87984f2792def660\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Kashish\AndroidStudioProjects\DelhiBusNavigator\app\build\intermediates\pre-dexed\debug\classes_56d0c5804dcba9e2128e983ccdf9e925624ac047.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Kashish\.android\build-cache\8062d1e53137d5772b9f95da24d713035a3dac10\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Kashish\AndroidStudioProjects\DelhiBusNavigator\app\build\intermediates\pre-dexed\debug\classes_2abe92a98eba14f3b4a0b352b0c658c78c557eed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Kashish\.android\build-cache\392a236f72d653e08243e37d7ff5b979748d8362\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Kashish\AndroidStudioProjects\DelhiBusNavigator\app\build\intermediates\pre-dexed\debug\classes_b73f4fce8665b183406ff1ed8f12d9f3b0305bf7.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Kashish\.android\build-cache\863f5ed8ec7d224daa12feb19045b110bf9bb75a\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -45,6 +72,24 @@
         revision="26.0.0"
         sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
         <dex dex="C:\Users\Kashish\AndroidStudioProjects\DelhiBusNavigator\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_84f187ec077986d14b30ec37b6fc9533bb14d9e0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Kashish\.android\build-cache\98ae7eccf83843ce399c37ceac0d73e9294dc982\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Kashish\AndroidStudioProjects\DelhiBusNavigator\app\build\intermediates\pre-dexed\debug\classes_eaf70a3a5b4c5c10e827d1131e299c79eb16a8c6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Kashish\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Kashish\AndroidStudioProjects\DelhiBusNavigator\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_39f0006cdc2bd64fe53b75a647b5ba12b622b0c0.jar" />
     </item>
     <item
         is-multidex="false"

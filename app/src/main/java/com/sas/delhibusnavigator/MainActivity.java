@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -77,6 +78,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		Intent x = new Intent("com.sas.delhibusnavigator.TUTORIALACTIVITY");
 		String query = "SELECT * FROM " + SplashActivity.table;
 		Cursor c = SplashActivity.check.rawQuery(query, null);
+        if(SplashActivity.check==null){
+            Toast.makeText(this, "kashish", Toast.LENGTH_LONG).show();
+        }
 		if(c.getCount() == 0) {
 			c.close();
 			ContentValues values = new ContentValues();
@@ -126,7 +130,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				Intent tour = new Intent("com.sas.delhibusnavigator.TOURISMACTIVITY");
 				startActivity(tour);
 				return true;
-
 			case R.id.exit:
 				this.finish();
 				return true;
@@ -175,41 +178,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 								FragmentTransaction fragmentTransaction) {
 	}
 
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-		public SectionsPagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-			Fragment fragment = new DummySectionFragment();
-			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position);
-			fragment.setArguments(args);
-			return fragment;
-		}
-
-		@Override
-		public int getCount() {
-			return 3;
-		}
-
-		@Override
-		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
-			switch (position) {
-				case 0:
-					return getString(R.string.title_section1).toUpperCase(l);
-				case 1:
-					return getString(R.string.title_section2).toUpperCase(l);
-				case 2:
-					return getString(R.string.title_section3).toUpperCase(l);
-			}
-			return null;
-		}
-	}
-
 	public static class DummySectionFragment extends Fragment {
 
 		public static final String ARG_SECTION_NUMBER = "section_number";
@@ -219,9 +187,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		ListView lv;
 		CustomListAdapter clAdapter;
 		DatabaseHelper myDbHelper;
-		ArrayList<String> bno = new ArrayList<String>();
-		ArrayList<String> source = new ArrayList<String>();
-		ArrayList<String> destination = new ArrayList<String>();
+		ArrayList<String> bno = new ArrayList<>();
+		ArrayList<String> source = new ArrayList<>();
+		ArrayList<String> destination = new ArrayList<>();
 
 		AutoCompleteTextView actv1, actv2;
 		LinkedList<String> ll;
@@ -232,7 +200,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		AutoCompleteTextView actv3;
 		ImageButton bFind;
 		ListView lvStops;
-		LinkedList<String> llSearch, llStops = new LinkedList<String>();
+		LinkedList<String> llSearch, llStops = new LinkedList<>();
 		ArrayAdapter<String> aa1, aa2;
 
 		public DummySectionFragment() {
@@ -363,14 +331,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					ibSrc =(ImageButton)rootView.findViewById(R.id.speakSource);
 					ibDest =(ImageButton)rootView.findViewById(R.id.speakDestination);
 					ll = myDbHelper.getAutoFill();
-					arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, ll);
+					arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, ll);
 					actv1.setAdapter(arrayAdapter);
 					actv2.setAdapter(arrayAdapter);
 					btn.setOnClickListener(new OnClickListener() {
 
 						@Override
 						public void onClick(View v) {
-							InputMethodManager localInputMethodManager = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+							InputMethodManager localInputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 							localInputMethodManager.hideSoftInputFromWindow(actv1.getWindowToken(), 0);
 							localInputMethodManager.hideSoftInputFromWindow(actv2.getWindowToken(), 0);
 							if (actv1.getText().toString().equals("") && actv2.getText().toString().equals("")) {
@@ -425,15 +393,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					bFind = (ImageButton) rootView.findViewById(R.id.bFindStop);
 					lvStops = (ListView) rootView.findViewById(R.id.lvStops);
 					llSearch = myDbHelper.getAutoStop();
-					aa1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, llSearch);
+					aa1 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, llSearch);
 					actv3.setAdapter(aa1);
-					aa2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, llStops);
+					aa2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, llStops);
 					bFind.setOnClickListener(new OnClickListener() {
 
 						@Override
 						public void onClick(View v) {
 							String stop = actv3.getText().toString();
-							InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+							InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 							imm.hideSoftInputFromWindow(actv3.getWindowToken(), 0);
 							llStops.clear();
 							aa2.clear();
@@ -445,7 +413,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 								if (llStops.isEmpty())
 									Toast.makeText(getActivity(), "Nothing found", Toast.LENGTH_LONG).show();
 								else {
-									aa2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, llStops);
+									aa2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, llStops);
 									lvStops.setAdapter(aa2);
 								}
 							}
@@ -465,6 +433,41 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					break;
 			}
 			return rootView;
+		}
+	}
+
+	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+		public SectionsPagerAdapter(FragmentManager fm) {
+			super(fm);
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			Fragment fragment = new DummySectionFragment();
+			Bundle args = new Bundle();
+			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		@Override
+		public int getCount() {
+			return 3;
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			Locale l = Locale.getDefault();
+			switch (position) {
+				case 0:
+					return getString(R.string.title_section1).toUpperCase(l);
+				case 1:
+					return getString(R.string.title_section2).toUpperCase(l);
+				case 2:
+					return getString(R.string.title_section3).toUpperCase(l);
+			}
+			return null;
 		}
 	}
 

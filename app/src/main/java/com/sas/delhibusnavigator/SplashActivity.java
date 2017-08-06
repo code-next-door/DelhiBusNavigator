@@ -10,11 +10,10 @@ import android.widget.Toast;
 
 public class SplashActivity extends Activity implements Runnable {
 
-	public final String database = "run.db";
 	public final static String table = "run";
 	public final static String Column_val = "val";
-
 	static SQLiteDatabase check;
+	public final String database = "run.db";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +35,9 @@ public class SplashActivity extends Activity implements Runnable {
 			Thread.sleep(1500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} finally {
-
-
-
-			//	Intent startingPoint = new Intent("com.sas.delhibusnavigator.MAINACTIVITY");
-			//startActivity(Intent.createChooser(startingPoint,"check"));
 		}
 		Intent startingPoint = new Intent("com.sas.delhibusnavigator.MAINACTIVITY");
 		startActivity(startingPoint);
-
 	}
 
 	@Override
@@ -56,7 +48,7 @@ public class SplashActivity extends Activity implements Runnable {
 
 	@Override
 	protected void onResume() {
-		check = openOrCreateDatabase(database, SQLiteDatabase.CREATE_IF_NECESSARY|SQLiteDatabase.OPEN_READWRITE, null);
+		check = openOrCreateDatabase(database, SQLiteDatabase.CREATE_IF_NECESSARY, null);
 		check.execSQL("CREATE TABLE IF NOT EXISTS " + table + " (" +
 				Column_val + " TEXT NOT NULL);");
 		super.onResume();
